@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML"></script>
+    <script type="text/javascript" src="../met.js"></script>
+</head>
+<body>
+    <div>
+        <label>Arithmetic</label><br/>
+        <input style="width: 1024px" type="text" id="text1" value="square root of million twenty two a plus three hundred twenty eight lambda first to the second plus integral from a to b f d x is equal to omega"/>
+        <button id="apply1">Apply</button>
+        <div id="result1" style="display: block; margin-top: 10px; width: 1024px; height: 100px;"></div>
+    </div>
+    <div>
+        <label>Arithmetic Espanol</label><br/>
+        <input style="width: 1024px" type="text" id="text1-1" value="Raíz cuadrada de millones veintidós a más trescientos veintiocho lambda primero a la segunda más integral de a a b f d x es igual a omega"/>
+        <button id="apply1-1">Apply</button>
+        <div id="result1-1" style="display: block; margin-top: 10px; width: 1024px; height: 100px;"></div>
+    </div>
+    <div>
+        <label>Chemistry</label><br/>
+        <input style="width: 1024px" type="text" id="text4" value=""/>
+        <button id="apply4">Apply</button>
+        <div id="result4" style="display: block; margin-top: 10px; width: 1024px; height: 100px;"></div>
+    </div>
+    <div>
+        <label>Sets</label><br/>
+        <input style="width: 1024px" type="text" id="text2" value="A intersection B minus C"/>
+        <button id="apply2">Apply</button>
+        <div id="result2" style="display: block; margin-top: 10px; width: 1024px; height: 100px;"></div>
+    </div>
+    <div>
+        <label>Logic</label><br/>
+        <input style="width: 1024px" type="text" id="text3" value="for any real r there exists a positive integer n such that n is greater than r."/>
+        <button id="apply3">Apply</button>
+        <div id="result3" style="display: block; margin-top: 10px; width: 1024px; height: 100px;"></div>
+    </div>
+    <script>
+       document.getElementById('apply1').addEventListener('click', function(){
+           document.getElementById('result1').innerHTML = MET(document.getElementById('text1').value, {output: 'latex', lang: 'en'});
+       });
+       document.getElementById('apply4').addEventListener('click', function(){
+         document.getElementById('result4').innerHTML = MET(document.getElementById('text4').value, {output: 'latex', type: 'chem', lang: 'en'});
+       });
+       document.getElementById('apply1-1').addEventListener('click', function(){
+           document.getElementById('result1-1').innerHTML = MET(document.getElementById('text1-1').value, {output: 'latex', lang: 'es'});
+       });
+       document.getElementById('apply2').addEventListener('click', function(){
+           document.getElementById('result2').innerHTML = MET(document.getElementById('text2').value, {output: 'text'});
+       });
+       document.getElementById('apply3').addEventListener('click', function(){
+           text2Exp(document.getElementById('text3').value, {output: 'katex', type: 'logic'}).then(function(result){
+               document.getElementById('result3').innerHTML = result;
+           });
+       });
+
+
+       /*window.MathJax = {
+           AuthorInit: function() {
+               MathJax.Hub.Register.StartupHook('End', function() {
+                   MathJax.Hub.processSectionDelay = 0
+                   var demoSource = document.getElementById('text1')
+                   var demoRendering = document.getElementById('result1')
+                   var math = MathJax.Hub.getAllJax('demoRendering')[0]
+                   demoSource.addEventListener('input', function() {
+                       MathJax.Hub.Queue(['Text', math, demoSource.value])
+                   })
+               })
+           }
+       }*/
+    </script>
+</body>
+</html>
